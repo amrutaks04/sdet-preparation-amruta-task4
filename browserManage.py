@@ -1,16 +1,31 @@
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 import time
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
 
-service=Service(executable_path="chromedriver.exe")
-driver=webdriver.Chrome(service=service)
+class browserManage:
+    def __init__(self):
+        try:
+            self.driver=webdriver.Chrome()
+            self.driver.maximize_window()
+            self.driver.implicitly_wait(20)
+        except Exception as e:
+            print(f'The exception caught is {e}')
+            self.driver=None
+    
+    def open_url(self,url):
+        if self.driver:
+            try:
+                self.driver.get(url)
+                print(f'Opened {url}')
+            except Exception as e:
+                print(f'Error in opening {e}')
+    
+    def close_url(self):
+        if self.driver:
+            time.sleep(10)
+            self.driver.quit()
+            print("Browser closed")
 
-driver.get("https://google.com")
 
-input_element=driver.find_element(By.CLASS_NAME,"gLFyf")
-input_element.send_keys("hello"+Keys.ENTER)
-
-time.sleep(10)
-driver.quit()
+browser=browserManage()
+browser.open_url("https://www.google.com")
+browser.close_url()
