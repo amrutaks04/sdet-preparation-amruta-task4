@@ -69,7 +69,7 @@ class WebElementHelper:
     
     def is_visible(self,by,value):
         try:
-            self.wait.until(EC.visibility_of_element_located(by,value))
+            self.wait.until(EC.visibility_of_element_located((by, value))) 
             print('Element is visible')
             return True
         except:
