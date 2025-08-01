@@ -27,5 +27,5 @@ class browserManage:
 
 
 browser=browserManage()
-browser.open_url("https://www.google.com")
+browser.open_url("https://www.netflix.com")
 browser.close_url()
