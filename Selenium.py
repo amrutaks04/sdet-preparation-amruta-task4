@@ -51,7 +51,7 @@ class WebElementHelper:
 
     def click_ele(self,by,value):
         try:
-            ele=self.wait.until(EC.element_to_be_clickable(by,value))
+            ele = self.wait.until(EC.element_to_be_clickable((by, value))) 
             ele.click()
             print("Element clicked")
         except:
@@ -61,7 +61,7 @@ class WebElementHelper:
         try:
             ele=self.find_element(by,value)
             if ele:
-                print(f'Text from element {ele}')
+                print(f'Text from element: {ele.text}')
                 return ele.text
         except:
             print("Failed to get text")
